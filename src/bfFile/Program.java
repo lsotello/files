@@ -1,26 +1,26 @@
 package bfFile;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class Program {
 
 	public static void main(String[] args) {
 
-		String path = "C:\\Users\\lsote\\eclipse-workspace\\bfFile\\in.txt";
+		String[] lines = new String[] {"Good Morning", "Good Afternoon","Good Night"};
 		
-		try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+		String path = "C:\\Users\\lsote\\eclipse-workspace\\bfFile\\out.txt";
+		
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(path,true))) {
 			
-			String line = br.readLine();
-			
-			while (line != null) {
-				System.out.println(line);
-				line = br.readLine();
+			for (String line : lines) {
+				bw.write(line);
+				bw.newLine();
 			}
 		}
 		catch(IOException e) {
-			System.out.println("Error: " + e.getMessage());
+			e.printStackTrace();
 		}
 	}
 }
