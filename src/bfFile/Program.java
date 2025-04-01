@@ -1,26 +1,26 @@
 package bfFile;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.File;
+import java.util.Scanner;
 
 public class Program {
 
 	public static void main(String[] args) {
 
-		String[] lines = new String[] {"Good Morning", "Good Afternoon","Good Night"};
+		Scanner sc = new Scanner(System.in);
 		
-		String path = "C:\\Users\\lsote\\eclipse-workspace\\bfFile\\out.txt";
+		System.out.println("Informe o caminho da pasta: ");
+		String strPath = sc.nextLine();
 		
-		try (BufferedWriter bw = new BufferedWriter(new FileWriter(path,true))) {
-			
-			for (String line : lines) {
-				bw.write(line);
-				bw.newLine();
-			}
+		File path = new File(strPath);
+		
+		File[] folders = path.listFiles(File::isDirectory);
+		System.out.println("FOLDERS:");
+		
+		for(File folder : folders) {
+			System.out.println(folder);
 		}
-		catch(IOException e) {
-			e.printStackTrace();
-		}
+		
+		sc.close();
 	}
 }
