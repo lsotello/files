@@ -21,6 +21,18 @@ public class Program {
 			System.out.println(folder);
 		}
 		
+		
+		File[] files = path.listFiles(File::isFile);
+		System.out.println();
+		System.out.println("FILES:");
+		
+		for(File file : files) {
+			System.out.println(file);
+		}
+		
+		boolean success = new File(strPath + "\\subdir").mkdir();
+		System.out.println("Diretorio criado: " + success);
+				
 		sc.close();
 	}
 }
